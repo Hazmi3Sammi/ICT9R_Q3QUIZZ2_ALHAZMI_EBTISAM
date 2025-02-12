@@ -14,6 +14,8 @@
             text-align: center;
             font-family: Papyrus, Fantasy;
             min-height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
         .container {
             margin-top: 20px;
@@ -44,9 +46,13 @@
             background-color: red;
             color: white;
         }
-        .footer{
-            margin-top: 365px;
-        	border-top: 2px solid white;
+      
+        .footer {
+            margin-top: auto;
+            border-top: 2px solid white; 
+            width: 100%;
+            padding: 10px;
+            background-color: rgba(0, 0, 0, 0.7);
         }
     </style>
 </head>
@@ -95,41 +101,57 @@
     </div>
 
     <script>
+        /**
+         * Function to display a welcome message when the user submits their name.
+         */
         function displayWelcomeMessage() {
-            var name = document.getElementById('nameInput').value;
-            if (name.trim() !== "") {
-                alert("Welcome, " + name + "! Please refer to the following ticket details.");
+            var name = document.getElementById('nameInput').value; // Get input value
+            
+            // Check if name is entered
+            if (name.trim() !== "") { 
+                alert("Welcome, " + name + "! Please refer to the following ticket details."); // Show greeting
             } else {
-                alert("Please enter your name.");
+                alert("Please enter your name."); // Prompt user to enter name
             }
         }
 
+        /**
+         * Function to calculate ticket price based on category and ticket type.
+         */
         function calculateTicketPrice() {
-            var ticketType = document.getElementById('ticketType').value;
-            var category = document.getElementById('category').value;
+            var ticketType = document.getElementById('ticketType').value; // Get selected ticket type
+            var category = document.getElementById('category').value; // Get selected category
 
-            var basePrice;
+            var basePrice; // Variable to store base price
+            
+            // Determine initial price based on category
             if (category === "Student") {
-                basePrice = 60.50;
+                basePrice = 60.50; // Student price
             } else if (category === "Senior") {
-                basePrice = 46.00;
+                basePrice = 46.00; // Senior price
             } else {
-                basePrice = 74.60;
+                basePrice = 74.60; // Regular Adult price
             }
 
-            var extraCharge = 0;
+            var extraCharge = 0; // Variable for extra charge
+            
+            // Add extra charge based on ticket type
             if (ticketType === "VIP") {
-                extraCharge = 200.00;
+                extraCharge = 200.00; // VIP ticket extra cost
             } else if (ticketType === "Balcony") {
-                extraCharge = 150.00;
+                extraCharge = 150.00; // Balcony ticket extra cost
             }
 
-            var finalPrice = basePrice + extraCharge;
-            alert("Welcome, " + document.getElementById('nameInput').value + "!\nYou have selected: " + ticketType + " (" + category + ")\nPrice: Pesos " + finalPrice.toFixed(2));
+            // Calculate final price
+            var finalPrice = basePrice + extraCharge; 
+
+            // Display final price in an alert box
+            alert("Welcome, " + document.getElementById('nameInput').value + "!\n" + 
+                  "You have selected: " + ticketType + " (" + category + ")\n" + 
+                  "Price: Pesos " + finalPrice.toFixed(2));
         }
     </script>
 
-    <br><br>
-    <footer class="footer" class="mt-4">© EBTISAM A. AL HAZMI</footer>
+    <footer class="footer">© EBTISAM A. AL HAZMI</footer>
 </body>
 </html>
