@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Premiere</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <style>
+        body {
+            background-image: url(https://hillsdalecollegian.com/wp-content/uploads/2023/09/lalaland.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
+            color: whitesmoke;
+            text-align: center;
+            font-family: Papyrus, Fantasy;
+            min-height: 100vh;
+        }
+        .container {
+            margin-top: 20px;
+        }
+        .header {
+            background-color: #4651EB;
+            padding: 15px;
+            font-size: 24px;
+            font-weight: bold;
+            margin: 15px;
+            border-radius: 15px;
+            border: 4px solid deepskyblue; 
+        }
+        .section {
+            background-color: rgba(38, 51, 231, 0.5);
+            padding: 15px;
+            margin: 15px auto;
+            width: 80%;
+            border-radius: 10px;
+            border: 4px solid lightblue;
+        }
+        .ticket-image {
+            max-width: 100%;
+            height: auto;
+            margin-top: 20px;
+        }
+        .btn-custom {
+            background-color: red;
+            color: white;
+        }
+        .footer{
+            margin-top: 365px;
+        	border-top: 2px solid white;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">Movie Premiere Tickets 🎹</div>
+
+    <div class="section">
+        <details>
+            <summary>Fill Out Form ^^</summary>
+            <i id="form">Please fill out the following to proceed :)</i>
+            <br><br>
+            <input type="text" id="nameInput" class="form-control" placeholder="Complete Full Name">
+            <br>
+            <input type="text" id="emailInput" class="form-control" placeholder="Complete Email">
+            <button class="btn btn-primary mt-2" onclick="displayWelcomeMessage()">SUBMIT INFO</button>
+        </details>
+    </div>
+
+    <div class="section">
+        <details>
+            <summary>Ticket Price~</summary>
+            <p>Check your ticket price</p>
+            <select id="ticketType" class="form-control">
+                <option value="Regular">Regular Seat</option>
+                <option value="VIP">VIP (2k with free services)</option>
+                <option value="Balcony">Balcony (2k quality)</option>
+            </select>
+            <select id="category" class="form-control mt-2">
+                <option value="Student">Student</option>
+                <option value="Senior">Senior</option>
+                <option value="Regular">Regular Adult</option>
+            </select>
+            <button class="btn btn-warning mt-2" onclick="calculateTicketPrice()">TICKET PRICE</button>
+        </details>
+    </div>
+
+    <div class="section">
+        <details>
+            <summary>Print Ticket!</summary>
+            <i>Please make sure to print the ticket!</i>
+            <br><br>
+            <img src="C:\Users\admin\Downloads\Free_Elegant_Movie_Ticket_Template.png" alt="Cinema Ticket" class="ticket-image">
+            <br><br>
+            <button class="btn btn-custom mt-2">PRINT TICKET</button>
+        </details>
+    </div>
+
+    <script>
+        function displayWelcomeMessage() {
+            var name = document.getElementById('nameInput').value;
+            if (name.trim() !== "") {
+                alert("Welcome, " + name + "! Please refer to the following ticket details.");
+            } else {
+                alert("Please enter your name.");
+            }
+        }
+
+        function calculateTicketPrice() {
+            var ticketType = document.getElementById('ticketType').value;
+            var category = document.getElementById('category').value;
+
+            var basePrice;
+            if (category === "Student") {
+                basePrice = 60.50;
+            } else if (category === "Senior") {
+                basePrice = 46.00;
+            } else {
+                basePrice = 74.60;
+            }
+
+            var extraCharge = 0;
+            if (ticketType === "VIP") {
+                extraCharge = 200.00;
+            } else if (ticketType === "Balcony") {
+                extraCharge = 150.00;
+            }
+
+            var finalPrice = basePrice + extraCharge;
+            alert("Welcome, " + document.getElementById('nameInput').value + "!\nYou have selected: " + ticketType + " (" + category + ")\nPrice: Pesos " + finalPrice.toFixed(2));
+        }
+    </script>
+
+    <br><br>
+    <footer class="footer" class="mt-4">© EBTISAM A. AL HAZMI</footer>
+</body>
+</html>
